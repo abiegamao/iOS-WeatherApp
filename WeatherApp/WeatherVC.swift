@@ -24,7 +24,8 @@ class WeatherVC: UIViewController, UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
     var currentWeather : CurrentWeather!
-    
+    var foreCast: Forecast!
+    var foreCasts = [Forecast]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +33,14 @@ class WeatherVC: UIViewController, UITableViewDelegate,UITableViewDataSource {
         tableView.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
         currentWeather = CurrentWeather()
+       // foreCast = Forecast()
         currentWeather.downloadWeatherDetails {
             //set up ui
-            self.updateMainUI()
-        
+            self.downloadForeCastData {
+                self.updateMainUI()
+            }
+            
+
         }
         
     }
@@ -50,13 +55,21 @@ class WeatherVC: UIViewController, UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return foreCasts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath)
         
-        return cell
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath) as? WeatherCell{
+            let forecast = foreCasts[indexPath.row]
+            cell.configureCell(forecast: forecast)
+            return cell;
+        }else{
+            return WeatherCell()
+        }
+        
+       /// return cell
     }
     
     func updateMainUI() {
@@ -68,6 +81,30 @@ class WeatherVC: UIViewController, UITableViewDelegate,UITableViewDataSource {
         currentWeatherImage.contentMode = .scaleAspectFill
     }
     
+    
+    func downloadForeCastData(completed: @escaping DownloadComplete)  {
+        //download data for tableview
+        Alamofire.request(FORECAST_URL).responseJSON{ response in
+        
+        let result = response.result
+            
+            if let dict = result.value as? Dictionary<String, AnyObject> {
+                if let list = dict["list"] as? [Dictionary<String, AnyObject>]{
+                    print(list)
+                    for obj in list{
+                        let forecast = Forecast(weatherDict: obj)
+                        self.foreCasts.append(forecast)
+                        print(obj)
+                        
+                        //if let temp = list[obj]["temp"] as? Dictionary<String,AnyObject>{
+                    }
+                }
+                
+                self.tableView.reloadData()
+            }
+            completed()
+        }
+    }
     
 
 

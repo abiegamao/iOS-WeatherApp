@@ -56,9 +56,6 @@
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="740" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dsb-OP-P1c">
                                                         <rect key="frame" x="24" y="0.0" width="120" height="120"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="7qN-yY-0AY"/>
-                                                        </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="200" verticalHuggingPriority="200" text="Rain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AiO-t1-gwt">
                                                         <rect key="frame" x="66" y="235" width="35.5" height="25"/>
@@ -69,10 +66,6 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="mbP-pa-M5W" firstAttribute="leading" secondItem="wC4-yf-kkI" secondAttribute="trailing" id="MmI-8Y-KOc"/>
-                                            <constraint firstItem="mbP-pa-M5W" firstAttribute="top" secondItem="OdC-Oc-bD3" secondAttribute="top" id="brq-c2-NUD"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.31764705882352939" green="0.64313725490196072" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,7 +81,7 @@
                                 <rect key="frame" x="0.0" y="299" width="375" height="368"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="weatherCell" rowHeight="80" id="uA5-te-85W">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="weatherCell" rowHeight="80" id="uA5-te-85W" customClass="WeatherCell" customModule="WeatherApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uA5-te-85W" id="LWs-OC-OUN">
@@ -154,6 +147,13 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="dayOfTheWeekLabel" destination="296-ly-eAa" id="6nQ-74-kSx"/>
+                                            <outlet property="highTempLabel" destination="NOp-Ht-OPP" id="wVp-XP-EMO"/>
+                                            <outlet property="lowTempLabel" destination="x4G-zQ-2na" id="Mx1-Kg-Zh6"/>
+                                            <outlet property="weatherIcon" destination="IU7-IT-RD9" id="Hv0-G6-l44"/>
+                                            <outlet property="weatherTypeLabel" destination="YiF-oz-FZC" id="A72-S7-Cbd"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
