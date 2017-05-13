@@ -10,13 +10,11 @@ import UIKit
 import Alamofire
 
 class Forecast{
-
     var _date: String!
     var _weatherType: String!
     var _highTemp: Double!
     var _lowTemp: Double!
 
-    
     var date: String{
         // Prevent Crashing
         if _date == nil{
@@ -32,7 +30,6 @@ class Forecast{
         }
         return _weatherType
     }
-    
     
     var highTemp: Double{
         // Prevent Crashing
@@ -87,7 +84,6 @@ class Forecast{
         }
     }
 }
-
 
 extension Date{
     func dayOfTheWeek() -> String {
