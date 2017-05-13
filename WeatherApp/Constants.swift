@@ -9,7 +9,7 @@
 import Foundation
 
 let BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
-
+let BASE_URL_FORECAST = "http://api.openweathermap.org/data/2.5/forecast/daily?"
 let LATITUDE = "lat="
 let LONGITUDE = "&lon="
 let APP_ID = "&appid="
@@ -22,6 +22,6 @@ let longi = Location.sharedInstance.longitude
 
 let CURRENT_WEATHER_URL = "\(BASE_URL)\(LATITUDE)\(Location.sharedInstance.latitude!)\(LONGITUDE)\(Location.sharedInstance.longitude!)\(APP_ID)\(API_KEY)"
 
-let FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=\(Location.sharedInstance.latitude!)&lon=\(Location.sharedInstance.longitude!)&cnt=10&appid=e55d26e770add10f899821e27672e402"
+let FORECAST_URL = "\(BASE_URL_FORECAST)\(LATITUDE)\(Location.sharedInstance.latitude!)\(LONGITUDE)\(Location.sharedInstance.longitude!)&cnt=10\(APP_ID)\(API_KEY)"
 
 

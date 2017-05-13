@@ -15,18 +15,13 @@ class WeatherVC: UIViewController, UITableViewDelegate,UITableViewDataSource,CLL
 
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var currentTempLabel: UILabel!
-    
     @IBOutlet weak var currentCity: UILabel!
-    
     @IBOutlet weak var currentWeatherImage: UIImageView!
-    
     @IBOutlet weak var currentWeatherTypeLabel: UILabel!
-    
     @IBOutlet weak var tableView: UITableView!
     
     let locationManager = CLLocationManager()
     var currentLocation : CLLocation!
-    
     
     var currentWeather : CurrentWeather!
     var foreCast: Forecast!
@@ -65,7 +60,6 @@ class WeatherVC: UIViewController, UITableViewDelegate,UITableViewDataSource,CLL
                 
             }
             
-
             print(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
         }
         else{
@@ -97,8 +91,6 @@ class WeatherVC: UIViewController, UITableViewDelegate,UITableViewDataSource,CLL
         }else{
             return WeatherCell()
         }
-        
-       /// return cell
     }
     
     func updateMainUI() {
@@ -109,7 +101,6 @@ class WeatherVC: UIViewController, UITableViewDelegate,UITableViewDataSource,CLL
         currentWeatherImage.image = UIImage(named: currentWeather.weatherType)
         currentWeatherImage.contentMode = .scaleAspectFill
     }
-    
     
     func downloadForeCastData(completed: @escaping DownloadComplete)  {
         //download data for tableview
@@ -135,8 +126,5 @@ class WeatherVC: UIViewController, UITableViewDelegate,UITableViewDataSource,CLL
             completed()
         }
     }
-    
-
-
 }
 
