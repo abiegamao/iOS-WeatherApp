@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import CoreLocation
 
 
 class WeatherVC: UIViewController, UITableViewDelegate,UITableViewDataSource {
@@ -99,6 +100,7 @@ class WeatherVC: UIViewController, UITableViewDelegate,UITableViewDataSource {
                         //if let temp = list[obj]["temp"] as? Dictionary<String,AnyObject>{
                     }
                 }
+                self.foreCasts.remove(at: 0)
                 
                 self.tableView.reloadData()
             }

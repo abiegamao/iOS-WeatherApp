@@ -28,7 +28,7 @@ class WeatherCell: UITableViewCell {
         weatherTypeLabel.text = forecast.weatherType
         dayOfTheWeekLabel.text = forecast.date
         weatherIcon.image = UIImage(named: forecast.weatherType)
-        weatherIcon.contentMode = .scaleAspectFill
+        weatherIcon.contentMode = .scaleAspectFit
         
     }
 
