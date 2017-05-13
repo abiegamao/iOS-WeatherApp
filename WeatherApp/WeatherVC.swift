@@ -56,10 +56,7 @@ class WeatherVC: UIViewController, UITableViewDelegate,UITableViewDataSource,CLL
                 self.downloadForeCastData {
                     self.updateMainUI()
                 }
-                
-                
             }
-            
             print(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
         }
         else{
@@ -82,8 +79,6 @@ class WeatherVC: UIViewController, UITableViewDelegate,UITableViewDataSource,CLL
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
         if let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath) as? WeatherCell{
             let forecast = foreCasts[indexPath.row]
             cell.configureCell(forecast: forecast)
@@ -119,8 +114,7 @@ class WeatherVC: UIViewController, UITableViewDelegate,UITableViewDataSource,CLL
                         //if let temp = list[obj]["temp"] as? Dictionary<String,AnyObject>{
                     }
                 }
-               // self.foreCasts.remove(at: 0)
-                
+                self.foreCasts.remove(at: 0)
                 self.tableView.reloadData()
             }
             completed()
